@@ -1,77 +1,88 @@
-# 🚍 AggieCommute: Optimizing Campus Transportation Flow
+# 🚍 AggieCommute: Optimizing Campus Transportation Flow at UC Davis
 
-AggieCommute is a data-driven project that analyzes Unitrans public transit patterns at UC Davis to identify peak congestion hours, gaps in bus service, and opportunities to improve campus mobility. Built for the HackDavis 2025 OpenDataHack, this project uses publicly accessible GTFS data to support sustainable, efficient commuting decisions for students and staff.
+AggieCommute is a data-driven project that analyzes UC Davis Unitrans GTFS data and TAPS parking trends to improve campus mobility. Through insightful visualizations, spatial analysis, and a clean interactive UI, AggieCommute identifies service gaps, peak congestion periods, and actionable improvements to reduce carbon emissions and support sustainable commuting.
 
----
-
-## 📌 Project Goals
-
-- Visualize and understand Unitrans route coverage over a typical day.
-- Identify times of congestion or service drop-off.
-- Provide actionable insights to improve shuttle timing and campus transportation planning.
+Built for HackDavis OpenDataHack 2025.
 
 ---
 
-## 📊 Datasets Used
+## 🌟 Inspiration
 
-- **[Unitrans GTFS Feed](https://unitrans.ucdavis.edu/gtfs)**  
-  General Transit Feed Specification (GTFS) zip file containing:
-  - `routes.txt`, `trips.txt`, `stop_times.txt`, `stops.txt`, `calendar.txt`
+AggieCommute was inspired by the challenges UC Davis students face commuting across campus — packed buses, full parking lots, and limited evening service. With both Unitrans GTFS and TAPS parking maps publicly available, we saw an opportunity to use open data to improve everyday transit decisions for our campus community.
 
 ---
 
-## 🧠 Methods
+## 💡 What it Does
 
-We processed the GTFS dataset using Python (Pandas, Matplotlib) by:
-- Merging stop times, trips, and route info
-- Filtering by popular routes (D, G, V, W)
-- Aggregating hourly stop frequencies
-- Generating visualizations of route activity
-
----
-
-## 📈 Visualizations
-
-- `images/route_v_frequency_cleaned.png`: Stop frequency by hour for Route V
-- `images/grouped_route_frequency.png`: Hourly comparison of stop activity for Routes D/G/V/W
-- `images/stacked_route_coverage.png`: Stacked total coverage by hour from all routes
+- 🕒 Analyzes Unitrans bus activity by hour and route
+- 🗺️ Maps geographic stop coverage using a weighted heatmap
+- 🚦 Integrates parking lot congestion patterns from the UC Davis TAPS Parking Impact Map
+- 📊 Visualizes transit patterns through bar charts and spatial insights
+- 🌐 Presents all findings in a responsive web UI built with Next.js
 
 ---
 
-## 📁 Repository Structure
+## 📁 Folder Structure
 
-aggiecommute/ ├── data/ # GTFS raw files (not uploaded due to size) ├── images/ # Output visualizations (.png) ├── notebooks/ │ └── analysis.ipynb # Annotated code used for processing and plotting ├── narrative.pdf # 1-page write-up explaining goals, methods, results └── README.md # This file
-
+/ ├── app/ # All page routes (Landing, Heatmap, Visualizations) ├── public/ │ ├── data/parking_congestion_notes.csv │ └── images/ │ ├── route_v_frequency_cleaned.png │ ├── grouped_route_frequency.png │ ├── stacked_route_coverage.png │ ├── weighted_heatmap_total.html │ └── parking_congestion_map.png ├── components/ │ └── Navbar.tsx ├── notebooks/ │ └── analysis.ipynb # GTFS preprocessing, charts, and heatmap generation ├── narrative.pdf # 1-page project overview (goals, methods, findings) ├── README.md
 
 
 ---
 
-## ✅ How to Run
+## 📊 Visualizations
 
-1. Download the GTFS zip from [unitrans.ucdavis.edu/gtfs](https://unitrans.ucdavis.edu/gtfs)
-2. Extract it into the `data/` folder
-3. Run `notebooks/analysis.ipynb` in Jupyter Notebook or VS Code
-
----
-
-## 🧾 Results & Impact
-
-- Bus routes show high coverage from 7 AM to 5 PM
-- Coverage drops sharply in the evening — even when classes and events continue
-- Identifying these gaps can help Unitrans/TAPS optimize bus schedules and improve accessibility
+- **Grouped Bar Chart:** Route D, G, V, and W frequency by hour
+- **Stacked Bar Chart:** Total route coverage per hour stacked by route
+- **Weighted Heatmap:** Geographic stop intensity based on number of scheduled trips
+- **TAPS Parking Map (Static):** Snapshot of UC Davis congestion zones
 
 ---
 
-## 💡 Future Work
+## 🛠️ How We Built It
 
-- Add campus **stop density heatmaps**
-- Integrate TAPS parking congestion data
-- Propose specific route/time recommendations for better service alignment
+- **Data wrangling:** Python + Pandas to clean and join `stop_times.txt`, `routes.txt`, `trips.txt`, and `stops.txt`
+- **Charting:** Matplotlib for grouped and stacked route frequency plots
+- **Heatmapping:** Folium for spatial stop clustering using weighted trip volume
+- **Frontend:** Next.js + Tailwind CSS for a clean, responsive user interface
+- **Design:** All pages use animated cards, soft gradients, and structured layout for storytelling
 
 ---
 
-## 🔗 License
+## ✅ Accomplishments We're Proud Of
 
-This project is open-source and free to use for research and civic engagement purposes.
+- Used **Folium for the first time** to build and embed interactive heatmaps
+- Turned raw GTFS data into real insights and clean visual storytelling
+- Designed and deployed a **multi-page app** with landing, charts, and map view
+- Extracted parking congestion manually from the **TAPS Parking Impact Map**
+- Created a project that's relevant and usable for UC Davis students
 
- 
+---
+
+## 📚 What We Learned
+
+- How GTFS transit data is structured and parsed
+- How to visualize time-based + spatial coverage using open data
+- How to integrate Python data products into a modern frontend UI
+- How to translate mobility data into decisions that impact real people
+
+---
+
+## 🚀 What's Next for AggieCommute
+
+- Add weekday vs. weekend route comparison
+- Include real-time bus arrival feeds if accessible
+- Work with Unitrans or TAPS to integrate this into official student tools
+- Let users filter the heatmap by route or time range
+
+---
+
+## 🔗 Public Data Sources
+
+- [Unitrans GTFS Feed](https://unitrans.ucdavis.edu/gtfs)
+- [UC Davis TAPS Parking Impact Map](https://transportation.ucdavis.edu/impact/map)
+
+---
+
+## 📄 License
+
+This project is open-source and available for reuse in civic and educational research. Attribution is appreciated.
